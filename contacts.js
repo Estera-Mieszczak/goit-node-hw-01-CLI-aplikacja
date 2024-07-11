@@ -11,7 +11,8 @@ const listContacts = async () => {
         const contacts = JSON.parse(data);
         return contacts;
     } catch (e) {
-        console.log("Error:", e.message);
+        console.log(e);
+        console.log("Error:", e.message, "| Something went wrong when you tried to list contacts");
         return [];
     }
 };
@@ -25,7 +26,8 @@ const getContactsById = async (contactId) => {
         )[0];
         return searchedContact;
     } catch (e) {
-        console.log("Error:", e.message);
+        console.log(e);
+        console.log("Error:", e.message, "| Something went wrong when you tried to get contacts");
         return null;
     }
 };
@@ -41,7 +43,8 @@ const addContact = async (name, email, phone) => {
         await fs.writeFile(contactsPath, contactToAdd);
         return updatedContacts;
     } catch (e) {
-        console.log("Error:", e.message);
+        console.log(e);
+        console.log("Error:", e.message, "| Something went wrong when you tried to add contact");
         return [];
     }
 };
@@ -55,7 +58,8 @@ const removeContact = async (contactId) => {
     await fs.writeFile(contactsPath, updatedData);
     return updatedContacts;
   } catch (error) {
-    console.log("Error:", error.message);
+    console.log(e);
+    console.log("Error:", e.message, "| Something went wrong when you tried to remove contact")
     return [];
   }
 };
